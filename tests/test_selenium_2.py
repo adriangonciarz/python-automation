@@ -1,24 +1,20 @@
-from time import sleep
-
-from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
-
 
 class TestCRMLogin:
     """Tests for CRM login"""
 
-    def test_successful_login_to_crm(self):
+    def test_successful_login_to_crm(self, driver):
         """Successful admin login"""
         driver.get('https://demo.django-crm.io/login/')
-
-        self._login(driver)
-
+        self._login(driver, 'admin@micropyramid.com', 'admin')
         assert driver.find_element_by_id('contacts').is_displayed()
         driver.quit()
 
-    def test_unsuccessful_login(self):
+    def test_unsuccessful_login(self, driver):
         """Test unsuccessful login"""
-        # bla bla bla....
+        driver.get('https://demo.django-crm.io/login/')
+        self._login(driver, 'wrong', 'admin')
+        assert driver.find_element_by_class_name('error').is_displayed()
 
     def _login(self, driver, email, password):
         email_input = driver.find_element(By.ID, 'exampleInputEmail1')

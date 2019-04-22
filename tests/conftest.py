@@ -1,5 +1,5 @@
+from selenium.webdriver import Chrome
 import random
-from webbrowser import Chrome
 
 import pytest
 
@@ -8,14 +8,19 @@ import pytest
 def my_name():
     return 'Adrian'
 
+
 @pytest.fixture(scope='session')
 def random_positive_number():
-    return random.randint(1,100)
+    return random.randint(1, 100)
 
-@pytest.fixture(scope='session')
-def driver():
-    driver = Chrome()
 
+@pytest.fixture()
+def driver(request):
+    wd = Chrome()
+    def close_driver():
+        wd.quit()
+    request.addfinalizer(close_driver)
+    return wd
 
 def pytest_itemcollected(item):
     par = item.parent.obj
