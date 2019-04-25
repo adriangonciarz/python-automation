@@ -17,10 +17,14 @@ def random_positive_number():
 @pytest.fixture()
 def driver(request):
     wd = Chrome()
+    wd.get('https://demo.django-crm.io/login/')
+
     def close_driver():
         wd.quit()
+
     request.addfinalizer(close_driver)
     return wd
+
 
 def pytest_itemcollected(item):
     par = item.parent.obj

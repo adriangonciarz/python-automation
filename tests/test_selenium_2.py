@@ -15,6 +15,7 @@ class TestCRMLogin:
         driver.get('https://demo.django-crm.io/login/')
         self._login(driver, 'wrong', 'admin')
         assert driver.find_element_by_class_name('error').is_displayed()
+        driver.quit()
 
     def _login(self, driver, email, password):
         email_input = driver.find_element(By.ID, 'exampleInputEmail1')

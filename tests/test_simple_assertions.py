@@ -19,3 +19,6 @@ def test_simple_integers(random_positive_number):
 def test_simple_integers_two(random_positive_number):
     """Check random integer between 0 and 100"""
     assert_that(random_positive_number).is_between(0, 100)
+
+@pytest
+def test_calculations(input, expected)

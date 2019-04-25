@@ -25,4 +25,5 @@ class TestCRMLogin:
     def test_unsuccessful_login(self):
         """Test unsuccessful login"""
         # bla bla bla....
+        pass
         
