@@ -8,7 +8,7 @@ def test_simple_one():
 
 
 def test_simple_two_fail():
-    """2 < 1 failing test in pytest"""
+    """2 < 1 failing test in AssertPy"""
     assert_that(2).is_less_than(1)
 
 
