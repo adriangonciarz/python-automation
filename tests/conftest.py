@@ -3,6 +3,8 @@ import random
 
 import pytest
 
+from config.config import BASE_URL
+
 
 @pytest.fixture
 def my_name():
@@ -17,7 +19,7 @@ def random_positive_number():
 @pytest.fixture()
 def driver(request):
     wd = Chrome()
-    wd.get('https://demo.django-crm.io/login/')
+    wd.get(BASE_URL)
 
     def close_driver():
         wd.quit()
